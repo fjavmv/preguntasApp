@@ -1,0 +1,64 @@
+<resources>
+    <string name="app_name">V/F</string>
+    <string name="btn_verdadero">Verdadero</string>
+    <string name="btn_falso">Falso</string>
+    <string name="btn_siguiente">Siguiente</string>
+    <string name="btn_prev">Previo</string>
+    <string name="txt_pregunta">¿Esto es una preguntan....?</string>
+    <string name="correct_toast">Correcto!</string>
+    <string name="incorrect_toast">Incorrecto!</string>
+
+
+    <string-array name="categorias">
+        <item>Categorias</item>
+        <item>Peliculas</item>
+        <item>Series</item>
+        <item>Anime</item>
+        <item>Musica</item>
+    </string-array>
+
+
+    <!--Sección de preguntas por categorias 1-->
+    <string name="preguntas_uno">Esto es una pregunta 1</string>
+    <string name="preguntas_dos">Esto es una pregunta 2</string>
+    <string name="preguntas_tre">Esto es una pregunta 3</string>
+    <string name="preguntas_cuatro">Esto es una pregunta 4</string>
+    <string name="preguntas_cinco">Esto es una pregunta 5</string>
+    <string name="preguntas_seis">Esto es una pregunta 5</string>
+    <string name="preguntas_siete">Esto es una pregunta 6</string>
+    <string name="preguntas_ocho">Esto es una pregunta 7</string>
+    <string name="preguntas_nueve">Esto es una pregunta 8</string>
+    <string name="preguntas_diez">Esto es una pregunta 8</string>
+
+
+    <!--Sección de preguntas por categorias 1-->
+    <string name="preguntas_s1">Esto es una serie</string>
+    <string name="preguntas_s2">Esto es una pregunta 2 serie</string>
+    <string name="preguntas_s3">Esto es una pregunta 3 serie</string>
+    <string name="preguntas_s4">Esto es una pregunta 4 serie</string>
+    <string name="preguntas_s5">Esto es una pregunta 5 serie</string>
+    <string name="preguntas_s36">Esto es una pregunta 5 serie</string>
+    <string name="preguntas_s37">Esto es una pregunta 6 serie</string>
+    <string name="preguntas_s38">Esto es una pregunta 7 serie</string>
+    <string name="preguntas_s9">Esto es una pregunta 8 serie</string>
+    <string name="preguntas_s310">Esto es una pregunta 8 serie</string>
+
+    <!--Textos para el menú-->
+    <string name="menu_contacto">Contacto</string>
+    <string name="menu_acerca_de">Acerca de</string>
+    <string name="menu_favorito">Favoritos</string>
+    <string name="menu_nombre">Nombre</string>
+    <string name="menu_email">Email</string>
+    <string name="menu_mensaje">Mensaje</string>
+    <string name="menu_enviar_comentario">Enviar comentario</string>
+
+
+
+    <!--Texto acerca de-->
+    <string name="desarrollado">Develop by: F. Javier M.V.</string>
+    <string name="version">V-1.0.0-Alpha-N172022</string>
+    <string name="year">11/17/2022-México</string>
+    <string name="contacto">fjavmvazquez@gmail.com</string>
+
+
+</resources>

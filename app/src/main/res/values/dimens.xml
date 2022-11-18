@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_layout">20dp</dimen>
+    <dimen name="margin_control">10dp</dimen>
+    <dimen name="padding_control">10dp</dimen>
+    <dimen name="text_size_header">40sp</dimen>
+
+        <!--dimens tool bar-->
+        <dimen name="elevation_toolbar">4dp</dimen>
+        <dimen name="text_size_toolbar">20sp</dimen>
+
+        <!--dimens CardView-->
+        <dimen name="corner_radius">4dp</dimen>
+        <dimen name="margin_cv">16dp</dimen>
+        <dimen name="margin_top_tv">26dp</dimen>
+        <dimen name="padding_img_cv">16dp</dimen>
+        <dimen name="paddin_tv_cv">16dp</dimen>
+        <dimen name="divider_cv">1dp</dimen>
+
+        <!--margin general-->
+        <dimen name="margin">16dp</dimen>
+        <dimen name="padding">16dp</dimen>
+
+        <!--dimens button-->
+
+</resources>
