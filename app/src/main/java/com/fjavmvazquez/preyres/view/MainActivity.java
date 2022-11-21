@@ -114,7 +114,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
                 if (position == 0){
+                    mImageViewReto.setImageResource(R.drawable.decision);
                     mTextViewPregunta.setText("Selecciona una categoria...");
+
                 }else {
                 mPreguntasArrayList = new ArrayList<>(option(position));
                 actualizarPregunta();
