@@ -1,20 +1,19 @@
 package com.fjavmvazquez.preyres.view;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintSet;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Layout;
-import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.fjavmvazquez.preyres.R;
 import com.fjavmvazquez.preyres.acerca.AcercaDe;
@@ -23,6 +22,7 @@ import com.fjavmvazquez.preyres.model.BancoPreguntas;
 import com.fjavmvazquez.preyres.model.Preguntas;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
     private Button mButtonVerdad;
@@ -30,27 +30,26 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton mButtonSiguiente;
     private TextView mTextViewPregunta;
     private ImageButton mButtonAnterior;
-    private TextView mTextViewAcerca;
-    private TextView mTextViewContacto;
+    private ImageView mImageViewContacto;
+    private ImageView mImageViewAcerca;
     private Spinner mSpinnerCategorias;
+    private ImageView mImageViewReto;
     private int mPreguntaActual = 0;
-
+    private ArrayList<Preguntas> mPreguntasArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //Permite ocultar el actionBar
+        Objects.requireNonNull(getSupportActionBar()).hide();
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        //inicializamos controles
+        inicializarControles();
 
-        //Establecemos la comunicación entre la vista y el controlador
-        mButtonVerdad = findViewById(R.id.btnVerdadero);
-        mButtonFalso = findViewById(R.id.btnFalso);
-        mTextViewPregunta = findViewById(R.id.txtPreguntas);
-        mButtonSiguiente = findViewById(R.id.btnSiguiente);
-        mButtonAnterior = findViewById(R.id.btnPrevio);
-        mTextViewAcerca = findViewById(R.id.txtAcerca);
-        mTextViewContacto = findViewById(R.id.txtContacto);
-        mSpinnerCategorias = findViewById(R.id.spiCategoria);
-
+        //Por defecto el arrayList Inicia con peliculas
+       // mPreguntasArrayList = new ArrayList<>(BancoPreguntas.getPeliculas());
 
         //Eventos onclick
         mButtonVerdad.setOnClickListener(new View.OnClickListener() {
@@ -90,14 +89,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        mTextViewContacto.setOnClickListener(new View.OnClickListener() {
+        mImageViewContacto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, Contacto.class);
                 startActivity(intent);
             }
         });
-        mTextViewAcerca.setOnClickListener(new View.OnClickListener() {
+        mImageViewAcerca.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, AcercaDe.class);
@@ -114,37 +113,58 @@ public class MainActivity extends AppCompatActivity {
         mSpinnerCategorias.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
-                option(position);
+                if (position == 0){
+                    mTextViewPregunta.setText("Selecciona una categoria...");
+                }else {
+                mPreguntasArrayList = new ArrayList<>(option(position));
+                actualizarPregunta();
+                }
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
         });
-
-        actualizarPregunta();
     }
 
-    private void option(int position){
+    private void inicializarControles(){
+        //Establecemos la comunicación entre la vista y el controlador
+        mButtonVerdad = findViewById(R.id.btnVerdadero);
+        mButtonFalso = findViewById(R.id.btnFalso);
+        mTextViewPregunta = findViewById(R.id.txtPreguntas);
+        mImageViewReto = findViewById(R.id.imgReto);
+        mButtonSiguiente = findViewById(R.id.btnSiguiente);
+        mButtonAnterior = findViewById(R.id.btnPrevio);
+        mImageViewAcerca = findViewById(R.id.imgBAcerca);
+        mImageViewContacto = findViewById(R.id.imgBContacto);
+        mSpinnerCategorias = findViewById(R.id.spiCategoria);
+
+    }
+
+    private ArrayList<Preguntas> option(int position){
+        ArrayList<Preguntas> mPreguntasArray = new ArrayList<>();
         switch (position){
             case 1:
+                mPreguntasArray = new ArrayList<>(BancoPreguntas.getPeliculas());
+                mImageViewReto.setImageResource(R.drawable.claqueta);
+
                 break;
             case 2:
-                display("Seleccionaste: ", position);
-
+                mPreguntasArray = new ArrayList<>(BancoPreguntas.getSeries());
+                mImageViewReto.setImageResource(R.drawable.serie);
                 break;
             case 3:
-                display("Seleccionaste: ", position);
-
+                mPreguntasArray = new ArrayList<>(BancoPreguntas.getAnimes());
+                mImageViewReto.setImageResource(R.drawable.anime);
                 break;
             case 4:
-                display("Seleccionaste: ", position);
-
+                mPreguntasArray = new ArrayList<>(BancoPreguntas.getMusica());
+                mImageViewReto.setImageResource(R.drawable.music);
                 break;
             default:
                 break;
         }
+        return mPreguntasArray;
     }
 
     //Metodo de notificaciones
@@ -161,24 +181,24 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void actualizarPregunta() {
-        int pregunta = BancoPreguntas.getPeliculas().get(mPreguntaActual).getPreguntaId();
+        int pregunta = mPreguntasArrayList.get(mPreguntaActual).getPreguntaId();
         mTextViewPregunta.setText(pregunta);
     }
 
     private void avanzar(){
-        mPreguntaActual = (mPreguntaActual + 1) % BancoPreguntas.getPeliculas().size();
-
+        mPreguntaActual = (mPreguntaActual + 1) % mPreguntasArrayList.size();
         actualizarPregunta();
+
     }
 
     private void retroceder(){
-        mPreguntaActual = (mPreguntaActual - 1 + BancoPreguntas.getPeliculas().size()) % BancoPreguntas.getPeliculas().size();
+        mPreguntaActual = (mPreguntaActual - 1 + mPreguntasArrayList.size()) % mPreguntasArrayList.size();
         actualizarPregunta();
     }
 
     private void revisarRespuesta(boolean useroption) {
-        boolean respuestaVerdadera = BancoPreguntas.getPeliculas().get(mPreguntaActual).isRespuestaVerdadero();
-        int mensajeResId = 0;
+        boolean respuestaVerdadera = mPreguntasArrayList.get(mPreguntaActual).isRespuestaVerdadero();
+        int mensajeResId;
         if (useroption == respuestaVerdadera) {
             mensajeResId = R.string.correct_toast;
         } else {
@@ -187,4 +207,12 @@ public class MainActivity extends AppCompatActivity {
         display(mensajeResId);
     }
 
+    private void contarAcierto(){
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
 }

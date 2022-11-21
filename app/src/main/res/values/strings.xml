@@ -19,29 +19,36 @@
 
 
     <!--Sección de preguntas por categorias 1-->
-    <string name="preguntas_uno">Esto es una pregunta 1</string>
-    <string name="preguntas_dos">Esto es una pregunta 2</string>
-    <string name="preguntas_tre">Esto es una pregunta 3</string>
-    <string name="preguntas_cuatro">Esto es una pregunta 4</string>
-    <string name="preguntas_cinco">Esto es una pregunta 5</string>
-    <string name="preguntas_seis">Esto es una pregunta 5</string>
-    <string name="preguntas_siete">Esto es una pregunta 6</string>
-    <string name="preguntas_ocho">Esto es una pregunta 7</string>
-    <string name="preguntas_nueve">Esto es una pregunta 8</string>
-    <string name="preguntas_diez">Esto es una pregunta 8</string>
+    <string name="question_1_p">El maquillaje y la peluquería de la película “Dallas Buyers Club” ganó el Oscar al mejor maquillaje y peluquería, a pesar de contar con apenas 250 dólares de presupuesto para este menester.</string>
+    <string name="question_2_p">El característico ruido de las espadas láser se hizo con un ventilador estropeado que George Lucas decidió reutilizar.</string>
+    <string name="question_3_p">Darth Vader aparece menos de 5 minutos en las primeras películas de Star Wars o La Guerra de las Galaxias.</string>
+    <string name="question_4_p">El actor Sean Connery usó peluca en casi todas las películas del agente 007, James Bond.</string>
+    <string name="question_5_p">En la película original de La noche de los Muertos Vivientes utilizaron sirope de chocolate en vez de sangre falsa.</string>
 
 
-    <!--Sección de preguntas por categorias 1-->
-    <string name="preguntas_s1">Esto es una serie</string>
-    <string name="preguntas_s2">Esto es una pregunta 2 serie</string>
-    <string name="preguntas_s3">Esto es una pregunta 3 serie</string>
-    <string name="preguntas_s4">Esto es una pregunta 4 serie</string>
-    <string name="preguntas_s5">Esto es una pregunta 5 serie</string>
-    <string name="preguntas_s36">Esto es una pregunta 5 serie</string>
-    <string name="preguntas_s37">Esto es una pregunta 6 serie</string>
-    <string name="preguntas_s38">Esto es una pregunta 7 serie</string>
-    <string name="preguntas_s9">Esto es una pregunta 8 serie</string>
-    <string name="preguntas_s310">Esto es una pregunta 8 serie</string>
+
+    <!--Sección de preguntas por categorias 2-->
+        <string name="question_1_a">Los Shinigamis se vuelven adictos a la primer cosa que comen en el mundo humano, sea lo que sea.</string>
+    <string name="question_2_a">El actor de doblaje de Ryuk y gran parte del staff de Death Note se purificaron en un templo de Tokio después de que les pasaran cosas extrañas durante el rodaje.</string>
+    <string name="question_3_a">El verdadero nombre de L es "Lo Lawliet"</string>
+    <string name="question_4_a">Las reglas de la Death Note son infinitas y los Shinigamis pueden añadir cuantas quieran</string>
+    <string name="question_5_a">Misa, Matsuda y Light hicieron el trato del ojo con el Shinigami.</string>
+    <string name="question_6_a"> En el El castillo vagabundo. ¿Es verdad que el cabeza de navo tenia un hechizo?</string>
+
+    <!--Sección de preguntas por categorias 2-->
+    <string name="question_1_s">En la película original de La noche de los Muertos Vivientes utilizaron sirope de chocolate en vez de sangre falsa.</string>
+    <string name="question_2_s">Al terminar de rodar 2001: Una odisea del espacio, su director, Stanley Kubrick guardó todos los decorados en su trastero para que nadie los volviera a usar nunca.</string>
+    <string name="question_3_s">El número de puertas que tuvo que destrozar Jack Nicholson en El Resplandor para contentar a Kubrick fueron... 25</string>
+    <string name="question_4_s">Leonardo DiCaprio al golpear la mesa en Django desencadenado se cortó la mano con una copa rota, pero en vez de parar continuó su escena y Tarantino grabando.</string>
+    <string name="question_5_s">La coraza que luce el emperador Comodo en la escena final de Gladiator es una réplica exacta de la que llevó en su día el emperador Calígula.</string>
+
+    <!--Sección de preguntas por categorias 2-->
+    <string name="question_1_m">El violín es un instrumento de viento madera.</string>
+    <string name="question_2_m">Si hablamos de figuras musicales, una "negra" equivale a dos "corcheas".</string>
+    <string name="question_3_m">Chopin compuso la obra "Para Elisa"</string>
+    <string name="question_4_m">En un compás de 4/4 entran 4 "blancas".</string>
+
+
 
     <!--Textos para el menú-->
     <string name="menu_contacto">Contacto</string>

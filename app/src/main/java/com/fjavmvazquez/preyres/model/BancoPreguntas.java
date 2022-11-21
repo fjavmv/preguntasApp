@@ -1,50 +1,48 @@
 package com.fjavmvazquez.preyres.model;
 
-import android.widget.ArrayAdapter;
 
 import com.fjavmvazquez.preyres.R;
-
 import java.util.ArrayList;
 
 public class BancoPreguntas {
 
     public static ArrayList<Preguntas> getPeliculas(){
-        ArrayList<Preguntas> pPeliculas = new ArrayList<>();
-        pPeliculas.add(new Preguntas(R.string.preguntas_dos, false));
-        pPeliculas.add(new Preguntas(R.string.preguntas_tre,false));
-        pPeliculas.add(new Preguntas(R.string.preguntas_cuatro,true));
-        pPeliculas.add(new Preguntas(R.string.preguntas_cinco,true));
-        return pPeliculas;
+        ArrayList<Preguntas> pelicula = new ArrayList<>();
+        pelicula.add(new Preguntas(R.string.question_1_p, false));
+        pelicula.add(new Preguntas(R.string.question_2_p,false));
+        pelicula.add(new Preguntas(R.string.question_3_p,true));
+        pelicula.add(new Preguntas(R.string.question_4_p,true));
+        return pelicula;
+    }
+
+    public static ArrayList<Preguntas> getSeries(){
+        ArrayList<Preguntas> serie = new ArrayList<>();
+        serie.add(new Preguntas(R.string.question_1_s, false));
+        serie.add(new Preguntas(R.string.question_2_s, false));
+        serie.add(new Preguntas(R.string.question_3_s, false));
+        serie.add(new Preguntas(R.string.question_4_s, false));
+        return serie;
     }
 
 
+    public static ArrayList<Preguntas> getAnimes(){
+        ArrayList<Preguntas> anime = new ArrayList<>();
+        anime.add(new Preguntas(R.string.question_1_a, false));
+        anime.add(new Preguntas(R.string.question_2_a, false));
+        anime.add(new Preguntas(R.string.question_3_a, true));
+        anime.add(new Preguntas(R.string.question_4_a, false));
+        anime.add(new Preguntas(R.string.question_5_a, true));
+        anime.add(new Preguntas(R.string.question_6_a, true));
+        return anime;
+    }
 
-    public static Preguntas [] pSeries = {
-            new Preguntas(R.string.preguntas_s1,true),
-            new Preguntas(R.string.preguntas_s2, false),
-            new Preguntas(R.string.preguntas_s3,false),
-            new Preguntas(R.string.preguntas_s4,true),
-            new Preguntas(R.string.preguntas_s5,true),
-            //Aqui pueden haber más preguntas....... Algo así...... :)
-    };
-
-    public static Preguntas [] pAnimes = {
-            new Preguntas(R.string.preguntas_uno,true),
-            new Preguntas(R.string.preguntas_dos, false),
-            new Preguntas(R.string.preguntas_tre,false),
-            new Preguntas(R.string.preguntas_cuatro,true),
-            new Preguntas(R.string.preguntas_cinco,true),
-            //Aqui pueden haber más preguntas....... Algo así...... :)
-    };
-
-    public static Preguntas [] pMusica = {
-            new Preguntas(R.string.preguntas_uno,true),
-            new Preguntas(R.string.preguntas_dos, false),
-            new Preguntas(R.string.preguntas_tre,false),
-            new Preguntas(R.string.preguntas_cuatro,true),
-            new Preguntas(R.string.preguntas_cinco,true),
-            //Aqui pueden haber más preguntas....... Algo así...... :)
-    };
-
+    public static ArrayList<Preguntas> getMusica(){
+        ArrayList<Preguntas> musica = new ArrayList<>();
+        musica.add(new Preguntas(R.string.question_1_m, false));
+        musica.add(new Preguntas(R.string.question_2_m, false));
+        musica.add(new Preguntas(R.string.question_3_m, false));
+        musica.add(new Preguntas(R.string.question_4_m, false));
+        return musica;
+    }
 
 }

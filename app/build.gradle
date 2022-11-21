@@ -40,10 +40,10 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
 
+    //Dependencias necesarias para el cliente de correos (para más información ver documentación)
     implementation 'com.sun.mail:android-mail:1.6.6'
     implementation 'com.sun.mail:android-activation:1.6.7'
-
+    //Dependencias para manejar cuestiones graficas imagenes circulares
     implementation 'com.mikhaellopez:circularimageview:4.3.1'
-
 
 }
