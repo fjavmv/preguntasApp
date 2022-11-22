@@ -47,45 +47,59 @@ public class MainActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         //inicializamos controles
         inicializarControles();
-
-        //Por defecto el arrayList Inicia con peliculas
-       // mPreguntasArrayList = new ArrayList<>(BancoPreguntas.getPeliculas());
-
         //Eventos onclick
         mButtonVerdad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Lanzamos Toast si es verdadero
-                revisarRespuesta(true);
+                if (mPreguntasArrayList == null) {
+                    display("Necesitas seleccionar primero una categoria...");
+                } else {
+                    revisarRespuesta(true);
+                }
             }
         });
         //Eventos onclick
         mButtonFalso.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Lanzamos Toast si es falso
-                revisarRespuesta(false);
+                if (mPreguntasArrayList == null) {
+                    display("Necesitas seleccionar primero una categoria...");
+                } else {
+                    revisarRespuesta(false);
+                }
             }
         });
 
         mButtonSiguiente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                avanzar();
+                if (mPreguntasArrayList == null) {
+                    display("Necesitas seleccionar primero una categoria...");
+                } else {
+                    avanzar();
+                }
             }
         });
 
         mTextViewPregunta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                avanzar();
+                if (mPreguntasArrayList == null) {
+                    display("Necesitas seleccionar primero una categoria...");
+                } else {
+                    avanzar();
+                }
             }
         });
 
         mButtonAnterior.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                retroceder();
+                if (mPreguntasArrayList == null) {
+                    display("Necesitas seleccionar primero una categoria...");
+                } else {
+                    retroceder();
+                }
             }
         });
 
@@ -104,32 +118,31 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         //Creamos un ArrayAdapter usando un string array y un layout por default
-        ArrayAdapter<CharSequence> adapterCategorias = ArrayAdapter.createFromResource(MainActivity.this,R.array.categorias, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapterCategorias = ArrayAdapter.createFromResource(MainActivity.this, R.array.categorias, android.R.layout.simple_spinner_item);
         //Especificamos el layout que se ocupará cuando la lista de opciones aparesca
         adapterCategorias.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-       //Aplicamos el adapter al sppiner
+        //Aplicamos el adapter al sppiner
         mSpinnerCategorias.setAdapter(adapterCategorias);
-
         mSpinnerCategorias.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
-                if (position == 0){
+                if (position == 0) {
                     mImageViewReto.setImageResource(R.drawable.decision);
                     mTextViewPregunta.setText("Selecciona una categoria...");
-
-                }else {
-                mPreguntasArrayList = new ArrayList<>(option(position));
-                actualizarPregunta();
+                    mPreguntasArrayList = null;
+                } else {
+                    mPreguntasArrayList = new ArrayList<>(option(position));
+                    actualizarPregunta();
                 }
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-
             }
         });
     }
 
-    private void inicializarControles(){
+    private void inicializarControles() {
         //Establecemos la comunicación entre la vista y el controlador
         mButtonVerdad = findViewById(R.id.btnVerdadero);
         mButtonFalso = findViewById(R.id.btnFalso);
@@ -140,12 +153,11 @@ public class MainActivity extends AppCompatActivity {
         mImageViewAcerca = findViewById(R.id.imgBAcerca);
         mImageViewContacto = findViewById(R.id.imgBContacto);
         mSpinnerCategorias = findViewById(R.id.spiCategoria);
-
     }
 
-    private ArrayList<Preguntas> option(int position){
+    private ArrayList<Preguntas> option(int position) {
         ArrayList<Preguntas> mPreguntasArray = new ArrayList<>();
-        switch (position){
+        switch (position) {
             case 1:
                 mPreguntasArray = new ArrayList<>(BancoPreguntas.getPeliculas());
                 mImageViewReto.setImageResource(R.drawable.claqueta);
@@ -170,16 +182,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Metodo de notificaciones
-    private void display(int id){
+    private void display(int id) {
         //(FORMA SIMPLE) Toast.makeText(MainActivity.this,id,Toast.LENGTH_SHORT).show();
         //Forma extensa y personalizada el metodo setGravity no funciona para la API 30 de android en adelante
-        Toast.makeText(this,id,Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, id, Toast.LENGTH_SHORT).show();
     }
 
-    private void display(String msj, int id){
+    private void display(String msj) {
         //(FORMA SIMPLE) Toast.makeText(MainActivity.this,id,Toast.LENGTH_SHORT).show();
         //Forma extensa y personalizada el metodo setGravity no funciona para la API 30 de android en adelante
-        Toast.makeText(this,msj+" "+id,Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, msj, Toast.LENGTH_SHORT).show();
     }
 
     private void actualizarPregunta() {
@@ -187,13 +199,12 @@ public class MainActivity extends AppCompatActivity {
         mTextViewPregunta.setText(pregunta);
     }
 
-    private void avanzar(){
+    private void avanzar() {
         mPreguntaActual = (mPreguntaActual + 1) % mPreguntasArrayList.size();
         actualizarPregunta();
-
     }
 
-    private void retroceder(){
+    private void retroceder() {
         mPreguntaActual = (mPreguntaActual - 1 + mPreguntasArrayList.size()) % mPreguntasArrayList.size();
         actualizarPregunta();
     }
@@ -209,7 +220,7 @@ public class MainActivity extends AppCompatActivity {
         display(mensajeResId);
     }
 
-    private void contarAcierto(){
+    private void contarAcierto() {
 
     }
 
