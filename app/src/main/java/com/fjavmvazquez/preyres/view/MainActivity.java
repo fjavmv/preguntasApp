@@ -56,8 +56,7 @@ public class MainActivity extends AppCompatActivity {
                 if (mPreguntasArrayList == null) {
                     display("Necesitas seleccionar primero una categoria...");
                 } else {
-                    int conteo = revisarRespuesta(true);
-                    mTextViewConteoTrue.setText(String.valueOf(conteo));
+                   revisarRespuesta(true);
                 }
             }
         });
@@ -68,8 +67,7 @@ public class MainActivity extends AppCompatActivity {
                 if (mPreguntasArrayList == null) {
                     display("Necesitas seleccionar primero una categoria...");
                 } else {
-                    int conteo = revisarRespuesta(false);
-                    mTextViewConteoFalse.setText(String.valueOf(conteo));
+                   revisarRespuesta(false);
                 }
             }
         });
@@ -221,36 +219,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //controller
-    private int revisarRespuesta(boolean useroption) {
+    private void revisarRespuesta(boolean useroption) {
         boolean respuestaVerdadera = mPreguntasArrayList.get(mPreguntaActual).isRespuestaVerdadero();
         int mensajeResId;
-        int valor = 0;
         if (useroption == respuestaVerdadera) {
-            valor = contarAcierto(useroption);
             mensajeResId = R.string.correct_toast;
         } else {
-            valor = contarFalse(useroption);
             mensajeResId = R.string.incorrect_toast;
         }
         display(mensajeResId);
-        return valor;
     }
 
-    private int contarAcierto(boolean respuestaVerdadera) {
-        int contarTrue =0;
-        if(respuestaVerdadera){
-            contarTrue = contarTrue + 1;
-        }
-        return  contarTrue;
-    }
 
-    private int contarFalse(boolean respuestaFalsa) {
-        int contarFalse =0;
-        if (respuestaFalsa){
-            contarFalse = contarFalse + 1;
-        }
-        return contarFalse;
-    }
     @Override
     protected void onDestroy() {
         super.onDestroy();
