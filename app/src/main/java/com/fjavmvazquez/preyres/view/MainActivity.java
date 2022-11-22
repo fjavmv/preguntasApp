@@ -34,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
     private ImageView mImageViewAcerca;
     private Spinner mSpinnerCategorias;
     private ImageView mImageViewReto;
+    private  TextView mTextViewConteoTrue;
+    private  TextView mTextViewConteoFalse;
     private int mPreguntaActual = 0;
     private ArrayList<Preguntas> mPreguntasArrayList;
 
@@ -54,7 +56,8 @@ public class MainActivity extends AppCompatActivity {
                 if (mPreguntasArrayList == null) {
                     display("Necesitas seleccionar primero una categoria...");
                 } else {
-                    revisarRespuesta(true);
+                    int conteo = revisarRespuesta(true);
+                    mTextViewConteoTrue.setText(String.valueOf(conteo));
                 }
             }
         });
@@ -65,7 +68,8 @@ public class MainActivity extends AppCompatActivity {
                 if (mPreguntasArrayList == null) {
                     display("Necesitas seleccionar primero una categoria...");
                 } else {
-                    revisarRespuesta(false);
+                    int conteo = revisarRespuesta(false);
+                    mTextViewConteoFalse.setText(String.valueOf(conteo));
                 }
             }
         });
@@ -142,6 +146,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    //View
     private void inicializarControles() {
         //Establecemos la comunicación entre la vista y el controlador
         mButtonVerdad = findViewById(R.id.btnVerdadero);
@@ -153,8 +158,11 @@ public class MainActivity extends AppCompatActivity {
         mImageViewAcerca = findViewById(R.id.imgBAcerca);
         mImageViewContacto = findViewById(R.id.imgBContacto);
         mSpinnerCategorias = findViewById(R.id.spiCategoria);
+        mTextViewConteoTrue = findViewById(R.id.txtPuntuacionTrue);
+        mTextViewConteoFalse = findViewById(R.id.txtPuntuacionFalsa);
     }
 
+    //controller
     private ArrayList<Preguntas> option(int position) {
         ArrayList<Preguntas> mPreguntasArray = new ArrayList<>();
         switch (position) {
@@ -194,36 +202,55 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, msj, Toast.LENGTH_SHORT).show();
     }
 
+    //controller
     private void actualizarPregunta() {
         int pregunta = mPreguntasArrayList.get(mPreguntaActual).getPreguntaId();
         mTextViewPregunta.setText(pregunta);
     }
 
+    //controller
     private void avanzar() {
         mPreguntaActual = (mPreguntaActual + 1) % mPreguntasArrayList.size();
         actualizarPregunta();
     }
 
+    //controller
     private void retroceder() {
         mPreguntaActual = (mPreguntaActual - 1 + mPreguntasArrayList.size()) % mPreguntasArrayList.size();
         actualizarPregunta();
     }
 
-    private void revisarRespuesta(boolean useroption) {
+    //controller
+    private int revisarRespuesta(boolean useroption) {
         boolean respuestaVerdadera = mPreguntasArrayList.get(mPreguntaActual).isRespuestaVerdadero();
         int mensajeResId;
+        int valor = 0;
         if (useroption == respuestaVerdadera) {
+            valor = contarAcierto(useroption);
             mensajeResId = R.string.correct_toast;
         } else {
+            valor = contarFalse(useroption);
             mensajeResId = R.string.incorrect_toast;
         }
         display(mensajeResId);
+        return valor;
     }
 
-    private void contarAcierto() {
-
+    private int contarAcierto(boolean respuestaVerdadera) {
+        int contarTrue =0;
+        if(respuestaVerdadera){
+            contarTrue = contarTrue + 1;
+        }
+        return  contarTrue;
     }
 
+    private int contarFalse(boolean respuestaFalsa) {
+        int contarFalse =0;
+        if (respuestaFalsa){
+            contarFalse = contarFalse + 1;
+        }
+        return contarFalse;
+    }
     @Override
     protected void onDestroy() {
         super.onDestroy();
